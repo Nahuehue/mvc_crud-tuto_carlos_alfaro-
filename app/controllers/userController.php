@@ -132,8 +132,7 @@
             $img_dir="../views/fotos/";
 
             //comproibar si se selcciono img
-            if ($_FILES['usuario_foto']['name']!="" && 
-            $_FILES['usuario_foto']['size']>0) {
+            if ($_FILES['usuario_foto']['name']!="" && $_FILES['usuario_foto']['size']>0) {
                 //creamos el directorio
                 if (!file_exists($img_dir)) {
                     if (!mkdir($img_dir, 0777)) {
@@ -149,9 +148,7 @@
                 }
 
                 //verificar formato de imagenes
-                if(mime_content_type($_FILES['usuario_foto']['tmp_name'])
-                !="image/jpeg" && mime_content_type($_FILES['usuario_foto']
-                ['tmp_name'])!="image/png"){
+                if(mime_content_type($_FILES['usuario_foto']['tmp_name'])!="image/jpeg" && mime_content_type($_FILES['usuario_foto']['tmp_name'])!="image/png"){
                     $alerta = [
                         "tipo" => "simple",
                         "titulo" => "Ocurrió un error inesperado",
