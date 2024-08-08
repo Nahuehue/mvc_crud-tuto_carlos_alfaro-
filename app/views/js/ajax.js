@@ -1,27 +1,30 @@
 const formularios_ajax = document.querySelectorAll(".FormularioAjax");
 
 formularios_ajax.forEach(formularios => {
-    formularios.addEventListener("submit", function(e){
-        e.preventDefault();
+
+    formularios.addEventListener("submit",function(e){
         
+        e.preventDefault();
+
         Swal.fire({
-            title: 'Estas seguro?',
-            text: "Quieres realizar la accion solicitada",
+            title: '¿Estás seguro?',
+            text: "Quieres realizar la acción solicitada",
             icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Si. Realizar',
-            cancelButtonText: 'No. Cancelar'
+            confirmButtonText: 'Si, realizar',
+            cancelButtonText: 'No, cancelar'
         }).then((result) => {
-            if (result.isConfirmed) {
+            if (result.isConfirmed){
+
                 let data = new FormData(this);
-                let method = this.getAttribute ("method");
-                let action = this.getAttribute ("action");
+                let method=this.getAttribute("method");
+                let action=this.getAttribute("action");
 
-                let encabezados = new Headers();
+                let encabezados= new Headers();
 
-                let config = {
+                let config={
                     method: method,
                     headers: encabezados,
                     mode: 'cors',
@@ -29,19 +32,22 @@ formularios_ajax.forEach(formularios => {
                     body: data
                 };
 
-                fetch(action, config)
+                fetch(action,config)
                 .then(respuesta => respuesta.json())
-                .then(respuesta => {
+                .then(respuesta =>{ 
                     return alertas_ajax(respuesta);
                 });
             }
         });
 
     });
+
 });
+
 
 function alertas_ajax(alerta){
     if (alerta.tipo == "simple") {
+
         Swal.fire({
             icon: alerta.icono,
             title: alerta.titulo,

@@ -16,17 +16,16 @@
 
 
         protected function conectar(){
-            $conexion  = new PDO("mysql:host=".$this->server.";dbname=".$this->db,
-             $this->user, $this->pass);
-             $conexion->exec("SET CHARACTER SET utf8");
-             return $conexion;
-        }
+			$conexion = new PDO("mysql:host=".$this->server.";dbname=".$this->db,$this->user,$this->pass);
+			$conexion->exec("SET CHARACTER SET utf8");
+			return $conexion;
+		}
 
         protected function ejecutarConsulta($consulta){
-            $sql = $this->conectar()->prepare($consulta);
-            $sql->execute();
-            return $sql;
-        }
+			$sql=$this->conectar()->prepare($consulta);
+			$sql->execute();
+			return $sql;
+		}
 
         //para evitar inyecciones sql
         public function limpiarCadena($cadena){
@@ -62,17 +61,15 @@
 
         protected function guardarDatos($tabla, $datos){
 
-            $query = "INSERT IN TO $tabla (";
+            $query = "INSERT INTO $tabla (";
             $c = 0;
             foreach ($datos as $clave ) {
-                if ($c >= 1) {
-                    $query.=","; 
-                }
+                if ($c >= 1) {$query.=","; }
                 $query.=$clave["campo_nombre"];
                 $c++;
             }
 
-            $query .= ")VALUES(";
+            $query .= ") VALUES(";
 
             $c = 0;
             foreach ($datos as $clave ) {
