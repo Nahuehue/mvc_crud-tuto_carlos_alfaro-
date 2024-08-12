@@ -20,5 +20,12 @@
 		<p class="has-text-centered mb-4 mt-3">
 			<button type="submit" class="button is-info is-rounded">Iniciar sesion</button>
 		</p>
+
 	</form>
 </div>
+
+<?php
+	if(isset($_POST['login_usuario']) && isset($_POST['login_clave'])){
+		$insLogin->iniciarSesionControlador();
+	}
+?>
