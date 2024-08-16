@@ -82,3 +82,28 @@ function alertas_ajax(alerta){
     }
     
 }
+
+//boton para cerrar sesion 
+
+let btn_exit = document.getElementById("btn_exit");
+
+btn_exit.addEventListener("click", function(e){
+    e.preventDefault();
+
+    Swal.fire({
+        title: '¿Quieres salir del sitema?',
+        text: "La sesion actual se cerrara y saldras delsitema",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Salir',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed){
+
+            let url =this.getAttribute("href");
+            window.location.href = url;
+        }
+    });
+});
