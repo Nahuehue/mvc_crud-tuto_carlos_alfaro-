@@ -56,7 +56,7 @@
                             if ($check_usuario['usuario_usuario'] == $usuario && password_verify($clave, $check_usuario['usuario_clave'] )) {
                                 //se crean variables de sesion
                                 $_SESSION['id'] = $check_usuario['usuario_id'];
-                                $_SESSION['nombre'] = $check_usuario['usuario_nombre '];
+                                $_SESSION['nombre'] = $check_usuario['usuario_nombre'];
                                 $_SESSION['apellido'] = $check_usuario['usuario_apellido'];
                                 $_SESSION['usuario'] = $check_usuario['usuario_usuario'];
                                 $_SESSION['foto'] = $check_usuario['usuario_foto'];
